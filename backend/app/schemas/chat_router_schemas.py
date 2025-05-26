@@ -3,5 +3,5 @@ from typing import Sequence
 
 
 class ChatRouterRequest(BaseModel):
-    history: str = None
+    user_id: str = None
     query :str

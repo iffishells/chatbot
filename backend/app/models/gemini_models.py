@@ -22,7 +22,10 @@ class GEMINIModel:
 
     def get_response(self,query,history):
 
-        concat_history_chat = history + "\n" + query
+        logger.info(f"Query: {query}")
+        logger.info(f"History: {history}")
+        history_text = "\n".join([msg["role"] + ": " + msg["message"] for msg in history])
+        concat_history_chat = history_text + "\nuser: " + query
         try:
             response = self.client.models.generate_content(
                 model =self.model_name,
